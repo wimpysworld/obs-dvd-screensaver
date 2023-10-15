@@ -220,7 +220,7 @@ static uint32_t dvd_source_getheight(void *data)
 
 static void dvd_source_render(void *data, gs_effect_t *effect)
 {
-	(void) effect;
+	UNUSED_PARAMETER(effect);
 	struct dvd_source *context = data;
 	if (obs_source_showing(context->source)) {
 		obs_source_t *target = NULL;
@@ -292,9 +292,9 @@ static void dvd_source_tick(void *data, float seconds)
 bool use_color_shift_changed(obs_properties_t *props, obs_property_t *p,
 			     obs_data_t *data)
 {
-	(void) props;
-	(void) p;
-	(void) data;
+	UNUSED_PARAMETER(props);
+	UNUSED_PARAMETER(p);
+	UNUSED_PARAMETER(data);
 	/* Returning true forces an update */
 	return true;
 }
@@ -302,7 +302,6 @@ bool use_color_shift_changed(obs_properties_t *props, obs_property_t *p,
 bool image_path_changed(obs_properties_t *props, obs_property_t *p,
 			obs_data_t *data)
 {
-	(void) p;
 	uint32_t cx = 0, cy = 0;
 
 	/* Since obs_source_getwidth reports old values, we
@@ -323,18 +322,19 @@ bool image_path_changed(obs_properties_t *props, obs_property_t *p,
 				    cx + 4, 0xffff, 1);
 	obs_property_int_set_limits(obs_properties_get(props, S_SOURCE_CY),
 				    cy + 4, 0xffff, 1);
+	UNUSED_PARAMETER(p);
 	return true;
 }
 static bool reset_logo_position(obs_properties_t *props,
 				obs_property_t *property, void *data)
 {
-	(void) props;
-	(void) property;
 	struct dvd_source *context = data;
 	context->pos.x = rand_limit(context->cx - context->img_cx);
 	context->pos.y = rand_limit(context->cx - context->img_cy);
 	context->d_x = rand_limit(1) == 0 ? -1 : 1;
 	context->d_y = rand_limit(1) == 0 ? -1 : 1;
+	UNUSED_PARAMETER(props);
+	UNUSED_PARAMETER(property);
 	return true;
 }
 
@@ -368,12 +368,12 @@ static bool dvd_enum_global_sources(void *param, obs_source_t *current)
 static bool source_changed(obs_properties_t *props, obs_property_t *prop,
 			   obs_data_t *data)
 {
-	(void) prop;
 	const char *val = obs_data_get_string(data, S_SOURCE_ID);
 	bool vis = strcmp(val, S_SOURCE_IMAGE) == 0;
 	obs_property_t *path = obs_properties_get(props, "file");
 
 	obs_property_set_visible(path, vis);
+	UNUSED_PARAMETER(prop);
 	return true;
 }
 
