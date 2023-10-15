@@ -41,14 +41,14 @@
     },
     "platformConfig": {
         "macos": {
-            "bundleId": "com.example.obs-plugintemplate"
+            "bundleId": "org.wimpysworld.obs-dvd-screensaver"
         }
     },
-    "name": "obs-plugintemplate",
-    "version": "1.0.0",
-    "author": "Your Name Here",
-    "website": "https://example.com",
-    "email": "me@example.com",
+    "name": "obs-dvd-screensaver",
+    "version": "0.0.1",
+    "author": "Martin Wimpress",
+    "website": "https://github.com/wimpysworld/obs-dvd-screensaver",
+    "email": "code@wimpress.io",
     "uuids": {
         "macosPackage": "00000000-0000-0000-0000-000000000000",
         "macosInstaller": "00000000-0000-0000-0000-000000000000",
