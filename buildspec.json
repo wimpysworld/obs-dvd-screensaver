@@ -33,7 +33,7 @@
     },
     "platformConfig": {
         "macos": {
-            "bundleId": "org.wimpysworld.obs-dvd-screensaver"
+            "bundleId": "com.wimpysworld.obs-dvd-screensaver"
         }
     },
     "name": "obs-dvd-screensaver",
