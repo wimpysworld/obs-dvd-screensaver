@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License along
 with this program. If not, see <https://www.gnu.org/licenses/>
 */
 
-#include <graphics/image-file.h>
 #include <obs-module.h>
-#include <plugin-support.h>
+#include <graphics/image-file.h>
+#include "plugin-support.h"
 
 #define FILTER_NAME "dvd-filter"
 #define SOURCE_NAME "dvd-image"
