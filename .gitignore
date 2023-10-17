@@ -9,10 +9,14 @@
 !/src
 !.clang-format
 !.cmake-format.json
+!.envrc
 !.gitignore
 !buildspec.json
 !CMakeLists.txt
 !CMakePresets.json
+!default.nix
+!flake.nix
+!shell.nix
 !LICENSE
 !README.md
 
