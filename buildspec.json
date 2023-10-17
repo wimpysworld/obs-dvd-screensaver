@@ -37,7 +37,7 @@
         }
     },
     "name": "obs-dvd-screensaver",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "author": "Martin Wimpress",
     "website": "https://github.com/wimpysworld/obs-dvd-screensaver",
     "email": "code@wimpress.io",
