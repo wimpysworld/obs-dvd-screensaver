@@ -21,6 +21,6 @@ by [Ayowel](https://github.com/Ayowel) and all wrapped up in the
 [OBS Plugin Template](https://github.com/obsproject/obs-plugintemplate) so that
 it builds 🧱 from source against current versions of OBS Studio.
 
-**This project is a work in progress**, it builds for Linux and is included in
-[OBS Studio Portable](https://github.com/wimpysworld/obs-studio-portable) but
-macOS and Windows need some work 🩹
+**This project is a work in progress**, it builds for Linux 🐧 and is included in
+[OBS Studio Portable](https://github.com/wimpysworld/obs-studio-portable).
+Windows 🪟 builds in CI but macOS 🍏 needs some work 🩹
