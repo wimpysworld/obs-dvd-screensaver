@@ -110,8 +110,10 @@ static bool add_source(struct dvd_source *context, const char *id)
 	obs_source_t *target = obs_get_source_by_name(id);
 	if (target) {
 		context->other_source = obs_source_get_weak_source(target);
-		context->img_cx = (uint32_t)(obs_source_get_width(target) * context->scale);
-		context->img_cy = (uint32_t)(obs_source_get_height(target) * context->scale);
+		context->img_cx = (uint32_t)(obs_source_get_width(target) *
+					     context->scale);
+		context->img_cy = (uint32_t)(obs_source_get_height(target) *
+					     context->scale);
 		obs_source_filter_add(target, context->color_filter);
 		obs_source_remove_active_child(context->source,
 					       context->logo_source);
@@ -159,10 +161,12 @@ static void dvd_source_update(void *data, obs_data_t *settings)
 		gs_image_file_free(&temp);
 		obs_leave_graphics();
 	} else {
-		context->img_cx = (uint32_t)(obs_source_get_width(context->logo_source) *
-				  context->scale);
-		context->img_cy = (uint32_t)(obs_source_get_height(context->logo_source) *
-				  context->scale);
+		context->img_cx =
+			(uint32_t)(obs_source_get_width(context->logo_source) *
+				   context->scale);
+		context->img_cy =
+			(uint32_t)(obs_source_get_height(context->logo_source) *
+				   context->scale);
 	}
 
 	if (context->use_image) {
@@ -237,7 +241,8 @@ static void dvd_source_render(void *data, gs_effect_t *effect)
 
 		if (target) {
 			gs_matrix_push();
-			gs_matrix_translate3f(context->pos.x, context->pos.y, 0.f);
+			gs_matrix_translate3f(context->pos.x, context->pos.y,
+					      0.f);
 			gs_matrix_scale3f(context->scale, context->scale, 1.f);
 			obs_source_video_render(target);
 			gs_matrix_pop();
