@@ -118,7 +118,9 @@ static bool add_source(struct dvd_source *context, const char *id)
 		if (!obs_source_add_active_child(context->source, target)) {
 			result = false;
 			remove_source(context);
-            obs_log(LOG_WARNING, "Can't add %s, as it would cause recursion", id);
+			obs_log(LOG_WARNING,
+				"Can't add %s, as it would cause recursion",
+				id);
 		}
 		obs_source_release(target);
 	}
@@ -431,8 +433,8 @@ static void *dvd_source_create(obs_data_t *settings, obs_source_t *source)
 {
 	struct dvd_source *context = bzalloc(sizeof(struct dvd_source));
 	context->source = source;
-	context->logo_source = obs_source_create_private(
-		"image_source", SOURCE_NAME, settings);
+	context->logo_source = obs_source_create_private("image_source",
+							 SOURCE_NAME, settings);
 #ifndef MAC_OS
 	context->color_filter = obs_source_create_private(
 		"color_filter", FILTER_NAME, settings);
@@ -487,7 +489,8 @@ OBS_MODULE_USE_DEFAULT_LOCALE(PLUGIN_NAME, "en-US")
 bool obs_module_load(void)
 {
 	obs_register_source(&dvd_source_info);
-	obs_log(LOG_INFO, "plugin loaded successfully (version %s)", PLUGIN_VERSION);
+	obs_log(LOG_INFO, "plugin loaded successfully (version %s)",
+		PLUGIN_VERSION);
 	return true;
 }
 
