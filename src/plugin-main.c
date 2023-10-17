@@ -168,7 +168,7 @@ static void dvd_source_update(void *data, obs_data_t *settings)
 	} else {
 		/* id is still postfixed with 'e' so get rid of that */
 		char *cpy = bstrdup(id);
-		int index = strlen(cpy) - 1;
+		size_t index = strlen(cpy) - 1;
 		if (index > 0)
 			cpy[index] = '\0';
 		remove_source(context);
