@@ -60,7 +60,8 @@ struct dvd_source {
 	struct vec2 pos;         /* Image position	*/
 	int8_t d_x, d_y;         /* Movement vector	*/
 	struct vec4 color;       /* Color		*/
-	double scale, speed;     /* Image scale/speed	*/
+	float scale;             /* Image scale	*/
+	double speed;            /* Image speed	*/
 };
 
 struct enum_param {
@@ -109,9 +110,8 @@ static bool add_source(struct dvd_source *context, const char *id)
 	obs_source_t *target = obs_get_source_by_name(id);
 	if (target) {
 		context->other_source = obs_source_get_weak_source(target);
-		context->img_cx = obs_source_get_width(target) * context->scale;
-		context->img_cy =
-			obs_source_get_height(target) * context->scale;
+		context->img_cx = (uint32_t)(obs_source_get_width(target) * context->scale);
+		context->img_cy = (uint32_t)(obs_source_get_height(target) * context->scale);
 		obs_source_filter_add(target, context->color_filter);
 		obs_source_remove_active_child(context->source,
 					       context->logo_source);
@@ -131,10 +131,10 @@ static void dvd_source_update(void *data, obs_data_t *settings)
 {
 	struct dvd_source *context = data;
 
-	context->cx = obs_data_get_int(settings, S_SOURCE_CX);
-	context->cy = obs_data_get_int(settings, S_SOURCE_CY);
-	context->scale = obs_data_get_double(settings, S_SCALE);
-	context->speed = obs_data_get_double(settings, S_SPEED);
+	context->cx = (uint32_t)obs_data_get_int(settings, S_SOURCE_CX);
+	context->cy = (uint32_t)obs_data_get_int(settings, S_SOURCE_CY);
+	context->scale = (float)obs_data_get_double(settings, S_SCALE);
+	context->speed = (double)obs_data_get_double(settings, S_SPEED);
 	context->use_color = obs_data_get_bool(settings, S_COLOR);
 
 #ifndef MAC_OS
@@ -154,15 +154,15 @@ static void dvd_source_update(void *data, obs_data_t *settings)
 		gs_image_file_init(&temp, file);
 		obs_enter_graphics();
 		gs_image_file_init_texture(&temp);
-		context->img_cx = temp.cx * context->scale;
-		context->img_cy = temp.cy * context->scale;
+		context->img_cx = (uint32_t)(temp.cx * context->scale);
+		context->img_cy = (uint32_t)(temp.cy * context->scale);
 		gs_image_file_free(&temp);
 		obs_leave_graphics();
 	} else {
-		context->img_cx = obs_source_get_width(context->logo_source) *
-				  context->scale;
-		context->img_cy = obs_source_get_height(context->logo_source) *
-				  context->scale;
+		context->img_cx = (uint32_t)(obs_source_get_width(context->logo_source) *
+				  context->scale);
+		context->img_cy = (uint32_t)(obs_source_get_height(context->logo_source) *
+				  context->scale);
 	}
 
 	if (context->use_image) {
@@ -237,8 +237,7 @@ static void dvd_source_render(void *data, gs_effect_t *effect)
 
 		if (target) {
 			gs_matrix_push();
-			gs_matrix_translate3f(context->pos.x, context->pos.y,
-					      0.f);
+			gs_matrix_translate3f(context->pos.x, context->pos.y, 0.f);
 			gs_matrix_scale3f(context->scale, context->scale, 1.f);
 			obs_source_video_render(target);
 			gs_matrix_pop();
@@ -254,8 +253,8 @@ static void dvd_source_tick(void *data, float seconds)
 	struct dvd_source *context = data;
 
 	if (obs_source_showing(context->source)) {
-		float d_x = seconds * (context->d_x * context->speed);
-		float d_y = seconds * (context->d_y * context->speed);
+		float d_x = (float)(seconds * (context->d_x * context->speed));
+		float d_y = (float)(seconds * (context->d_y * context->speed));
 
 		bool bounce = false;
 
@@ -331,8 +330,8 @@ static bool reset_logo_position(obs_properties_t *props,
 				obs_property_t *property, void *data)
 {
 	struct dvd_source *context = data;
-	context->pos.x = rand_limit(context->cx - context->img_cx);
-	context->pos.y = rand_limit(context->cx - context->img_cy);
+	context->pos.x = (float)rand_limit(context->cx - context->img_cx);
+	context->pos.y = (float)rand_limit(context->cx - context->img_cy);
 	context->d_x = rand_limit(1) == 0 ? -1 : 1;
 	context->d_y = rand_limit(1) == 0 ? -1 : 1;
 	UNUSED_PARAMETER(props);
