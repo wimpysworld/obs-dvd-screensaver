@@ -475,6 +475,7 @@ static struct obs_source_info dvd_source_info = {
 	.id = DVD_SOURCE_ID,
 	.type = OBS_SOURCE_TYPE_INPUT,
 	.output_flags = OBS_SOURCE_VIDEO | OBS_SOURCE_CUSTOM_DRAW,
+	.icon_type = OBS_ICON_TYPE_IMAGE,
 	.get_name = dvd_source_get_name,
 	.create = dvd_source_create,
 	.destroy = dvd_source_destroy,
