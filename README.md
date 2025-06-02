@@ -23,4 +23,4 @@ it builds 🧱 from source against current versions of OBS Studio.
 
 **This project is a work in progress**, it builds for Linux 🐧 and is included in
 [OBS Studio Portable](https://github.com/wimpysworld/obs-studio-portable).
-Windows 🪟 builds in CI but is untested and macOS 🍏 needs some work 🩹
+Windows 🪟 and macOS 🍏 build in CI but are untested.
