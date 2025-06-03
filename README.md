@@ -14,6 +14,12 @@ for fun, or make your "back soon" scene more interesting, perhaps use it as a
 channel point redemption or when you need to watermark your your live stream
 with a moving image 🛡️
 
+## Requirements
+
+- OBS Studio 31.0.0 or newer
+
+## History
+
 It is the continuation of the original [dvds3](https://github.com/univrsal/dvds3)
 plugin by [univrsal](https://github.com/univrsal), inspired by
 [some patches](https://github.com/Ayowel/dvds3/commit/c177440488d716e950bbb042654d9de1f18fffdc)
@@ -21,6 +27,5 @@ by [Ayowel](https://github.com/Ayowel) and all wrapped up in the
 [OBS Plugin Template](https://github.com/obsproject/obs-plugintemplate) so that
 it builds 🧱 from source against current versions of OBS Studio.
 
-**This project is a work in progress**, it builds for Linux 🐧 and is included in
-[OBS Studio Portable](https://github.com/wimpysworld/obs-studio-portable).
-Windows 🪟 and macOS 🍏 build in CI but are untested.
+**This project is only tested on Linux 🐧**.
+It is built and released for Windows 🪟 and macOS 🍏 and should work fine, if it doesn't patches are welcome 🩹
