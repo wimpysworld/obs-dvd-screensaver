@@ -76,7 +76,7 @@ runs:
           local -r certificate_path="${RUNNER_TEMP}/build_certificate.p12"
           local -r keychain_path="${RUNNER_TEMP}/app-signing.keychain-db"
 
-          print -n "${MACOS_SIGNING_CERT}" | base64 --decode --output=${certificate_path}
+          print -n "${MACOS_SIGNING_CERT}" | base64 --decode --output="${certificate_path}"
 
           : "${MACOS_KEYCHAIN_PASSWORD:="$(print ${RANDOM} | shasum | head -c 32)"}"
 
