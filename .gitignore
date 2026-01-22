@@ -11,6 +11,7 @@
 !.cmake-format.json
 !.envrc
 !.gitignore
+!AGENTS.md
 !buildspec.json
 !CMakeLists.txt
 !CMakePresets.json
