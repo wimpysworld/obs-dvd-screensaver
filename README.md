@@ -18,6 +18,30 @@ with a moving image 🛡️
 
 - OBS Studio 31.0.0 or newer
 
+## Building from Source
+
+You'll need CMake 3.28+, a C compiler, and the OBS Studio development libraries. See the [OBS Plugin Template](https://github.com/obsproject/obs-plugintemplate) for detailed environment setup.
+
+**Linux:**
+```bash
+cmake --preset ubuntu-x86_64
+cmake --build --preset ubuntu-x86_64
+```
+
+**Windows:**
+```bash
+cmake --preset windows-x64
+cmake --build --preset windows-x64
+```
+
+**macOS:**
+```bash
+cmake --preset macos
+cmake --build --preset macos
+```
+
+A Nix flake is available for development: `nix develop`
+
 ## History
 
 It is the continuation of the original [dvds3](https://github.com/univrsal/dvds3)
