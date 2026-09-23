@@ -414,8 +414,13 @@ static obs_properties_t *dvd_source_properties(void *data)
 							0.10f, 1000.f, 0.25);
 			obs_properties_add_float_slider(props, S_SCALE, T_SCALE,
 							0.10f, 10.f, 0.25);
+#ifdef OBS_PROPERTIES_ADD_BUTTON2
+			obs_properties_add_button2(props, S_RESET, T_RESET,
+						  reset_logo_position, data);
+#else
 			obs_properties_add_button(props, S_RESET, T_RESET,
 						  reset_logo_position);
+#endif
 			obs_property_set_modified_callback(
 				obs_properties_get(props, "file"),
 				image_path_changed);
